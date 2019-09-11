@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Mushroom Kingdom Plumbing 2019',
+    date: '2000XX',
+    firstParagraph: `Mario Lorem ipsum dolor sit amet Luigi Lorem ipsum dolor sit amet Peach Lorem ipsum dolor sit amet Yoshi Lorem ipsum dolor sit amet Daisy Lorem ipsum dolor sit amet Waluigi Lorem ipsum dolor sit amet Bowser Lorem ipsum dolor sit amet Koopa Lorem ipsum dolor sit amet troopa Lorem ipsum dolor sit amet baby bowser Lorem ipsum dolor sit amet dry bones Lorem ipsum dolor sit amet`,
+
+    secondParagraph: `Link Lorem ipsum dolor sit amet Zelda Lorem ipsum dolor sit amet master sword Lorem ipsum dolor sit amet Ganondorf Lorem ipsum dolor sit amet king Lorem ipsum dolor sit amet hyrule Lorem ipsum dolor sit amet epona Lorem ipsum dolor sit amet green tunic Lorem ipsum dolor sit amet fairies Lorem ipsum dolor sit amet din's fire Lorem ipsum dolor sit amet Ganon Lorem ipsum dolor sit amet hero of time`,
+
+    thirdParagraph: `Donkey Kong Lorem ipsum dolor sit amet Diddy Kong Lorem ipsum dolor sit ametLorem ipsum dolor sit amet Baby kong Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet cranky kong Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet donkey kong jr Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet king k rool Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet kirby Lorem ipsum dolor sit amet metaknight Lorem ipsum dolor sit amet king dedede Lorem ipsum dolor sit amet waddle dee Lorem ipsum dolor sit amet super smash bros invitational`,
   }
 ];
 
@@ -102,7 +111,7 @@ const data = [
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +121,53 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//Step 1
+const container = document.querySelector(".data")
+
+function creator(text) {
+  const article = document.createElement("div")
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const paraOne = document.createElement('p');
+  const paraTwo = document.createElement('p');
+  const paraThree = document.createElement('p');
+  const button = document.createElement('span');
+    
+  //create structure
+article.appendChild(title);
+article.appendChild(date);
+article.appendChild(paraOne);
+article.appendChild(paraTwo);
+article.appendChild(paraThree);
+article.appendChild(button);
+
+
+//set content
+title.textContent = text.title;
+date.textContent = text.date;
+paraOne.textContent = text.firstParagraph;
+paraTwo.textContent = text.secondParagraph;
+paraThree.textContent = text.thirdParagraph;
+button.textContent = '\u2b0d';
+
+
+//styles
+article.classList.add('article');
+date.classList.add('date');
+button.classList.add('expandButton');
+
+
+//event handlers
+button.addEventListener ('click', (event) =>{
+  article.classList.toggle('article-open');
+});
+
+return article;
+}
+
+const webpt9 = document.querySelector('.articles');
+
+data.forEach(event => {
+  webpt9.appendChild(creator(event))
+});
