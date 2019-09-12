@@ -132,7 +132,7 @@ function creator(text) {
   const paraOne = document.createElement('p');
   const paraTwo = document.createElement('p');
   const paraThree = document.createElement('p');
-  const button = document.createElement('span');
+  const button = document.createElement('button');
     
   //create structure
 article.appendChild(title);
@@ -149,7 +149,7 @@ date.textContent = text.date;
 paraOne.textContent = text.firstParagraph;
 paraTwo.textContent = text.secondParagraph;
 paraThree.textContent = text.thirdParagraph;
-button.textContent = '\u2b0d';
+button.textContent = 'Push Here';
 
 
 //styles
