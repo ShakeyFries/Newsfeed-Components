@@ -34,36 +34,25 @@ let menuItems = [
   
 */
 
-// Step 1
-function menuCreator(text){
-  //step 2 
-  let menu = document.createElement('div');
-  let ulList = document.createElement('ul');
-  let listItems = document.createElement('li');
-  //step 3
-  let menuButton = document.querySelector('.menu-button');
 
-  menu.classList.add('.menu');
-  ulList.classList.add('ul');
-  listItems.classList.add('li');
+const createMenu = (items) => {
+  const menu = document.createElement('div');
+  menu.className = 'menu';
+  document.querySelector('.header').appendChild(menu);
 
-  menuItems.forEach( (item) => {
-    menu.appendChild(ulList);
-    ulList.appendChild(listItems);
-    menu.textContent(ulList);
-    ulList.textContent(listItems);
-  });  
-  
-  //step 4
-  menuButton.addEventListener(click (event) => {
-    menu.classlist.add.toggle('menu--open');
-    event.stopPropagation();
-  }, false)
-  //step 5
+  const menuList = document.createElement('ul');
+  menu.appendChild(menuList);
+  items.forEach((item) => {
+    const menuItem = document.createElement('li');
+    menuItem.textContent = item;
+    menuList.appendChild(menuItem);
+  });
+
+  document.querySelector('.menu-button').addEventListener('click', () => {
+    menu.classList.toggle('menu--open');
+  });
+
   return menu;
-}
+ };
+ createMenu(menuItems);
 
-let main = document.querySelector('.header h1')
-let head = document.querySelector('.header');
-
-head.insertBefore(createMenu(menuItems), menu);
